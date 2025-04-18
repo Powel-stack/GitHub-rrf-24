@@ -1,4 +1,41 @@
 Version: 1.0
+install.packages("renv")
+renv::install("tidyverse")
+renv::install("haven")
+renv::install("dplyr")
+renv::snapshot()
+renv::restore()
+# --------------------------------------------
+# R Script: setup_renv_environment.R
+# Purpose: Initialize renv environment and install basic packages
+# --------------------------------------------
+
+# Step 1: Install renv (if not already installed)
+if (!requireNamespace("renv", quietly = TRUE)) {
+  install.packages("renv")
+}
+
+# Step 2: Initialize a blank project-specific environment
+renv::init()  # Only run once per project
+
+# Step 3: Install packages required for the project
+# Replace or add to this list as needed
+renv::install("tidyverse")
+renv::install("haven")
+renv::install("dplyr")
+
+# Step 4: Save the installed package versions to renv.lock
+renv::snapshot()
+
+# --------------------------------------------
+# Now go to the "Packages" tab in RStudio to confirm "Project Library" is visible.
+# Commit the following files to GitHub using GitHub Desktop:
+# - R/renv.lock
+# - R/.Rprofile
+# - R/renv/.gitignore
+# - R/renv/activate.R
+# - R/renv/settings.json
+# --------------------------------------------
 
 RestoreWorkspace: Default
 SaveWorkspace: Default
